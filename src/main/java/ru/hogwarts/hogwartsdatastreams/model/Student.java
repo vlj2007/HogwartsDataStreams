@@ -3,6 +3,7 @@ package ru.hogwarts.hogwartsdatastreams.model;
 import jakarta.persistence.*;
 
 import java.util.Objects;
+
 @Entity
 public class Student {
     @Id
@@ -12,6 +13,14 @@ public class Student {
     private String name;
     @Column
     private int age;
+
+    @ManyToOne
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
+
+    public Faculty getFaculty() {
+        return faculty;
+    }
 
     public Student() {
     }
