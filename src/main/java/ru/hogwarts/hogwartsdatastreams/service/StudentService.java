@@ -3,6 +3,7 @@ package ru.hogwarts.hogwartsdatastreams.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ru.hogwarts.hogwartsdatastreams.api.IStudent;
 import ru.hogwarts.hogwartsdatastreams.model.Avatar;
 import ru.hogwarts.hogwartsdatastreams.model.Student;
 import ru.hogwarts.hogwartsdatastreams.repository.AvatarRepository;
@@ -13,10 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class StudentService {
-
-//    @Value("${avatars.dir.path}")
-//    private String avatarsDir;
+public class StudentService implements IStudent {
 
     private final StudentRepository studentRepository;
     private final AvatarRepository avatarRepository;
@@ -75,18 +73,6 @@ public class StudentService {
     public Collection<Student> findStudentByNameIgnoreCaseIsLike(String like) {
         return studentRepository.findStudentByNameIgnoreCaseIsLike(like);
     }
-
-
-
-
-
-
-
-    public Avatar findAvatar(long studentId) {
-        return avatarRepository.findByStudentId(studentId).orElseThrow();
-    }
-
-
 
 
 

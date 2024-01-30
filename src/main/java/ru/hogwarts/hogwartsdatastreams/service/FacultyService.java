@@ -2,6 +2,7 @@ package ru.hogwarts.hogwartsdatastreams.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.hogwarts.hogwartsdatastreams.api.IFaculty;
 import ru.hogwarts.hogwartsdatastreams.model.Faculty;
 import ru.hogwarts.hogwartsdatastreams.repository.FacultyRepository;
 import ru.hogwarts.hogwartsdatastreams.exception.BadRequestException;
@@ -10,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class FacultyService {
+public class FacultyService implements IFaculty {
 
     @Autowired
     private final FacultyRepository facultyRepository;
