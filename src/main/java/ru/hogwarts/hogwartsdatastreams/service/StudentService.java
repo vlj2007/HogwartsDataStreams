@@ -1,8 +1,11 @@
 package ru.hogwarts.hogwartsdatastreams.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import ru.hogwarts.hogwartsdatastreams.model.Avatar;
 import ru.hogwarts.hogwartsdatastreams.model.Student;
+import ru.hogwarts.hogwartsdatastreams.repository.AvatarRepository;
 import ru.hogwarts.hogwartsdatastreams.repository.StudentRepository;
 import ru.hogwarts.hogwartsdatastreams.exception.BadRequestException;
 
@@ -11,14 +14,21 @@ import java.util.List;
 
 @Service
 public class StudentService {
-    @Autowired
-    private final StudentRepository studentRepository;
 
-    public StudentService(StudentRepository studentRepository) {
+//    @Value("${avatars.dir.path}")
+//    private String avatarsDir;
+
+    private final StudentRepository studentRepository;
+    private final AvatarRepository avatarRepository;
+
+    public StudentService(StudentRepository studentRepository, AvatarRepository avatarRepository) {
         this.studentRepository = studentRepository;
+        this.avatarRepository = avatarRepository;
+
     }
 
     public Student createdStudent(Student student) {
+        student.setId(null);
         return studentRepository.save(student);
     }
 
@@ -65,6 +75,18 @@ public class StudentService {
     public Collection<Student> findStudentByNameIgnoreCaseIsLike(String like) {
         return studentRepository.findStudentByNameIgnoreCaseIsLike(like);
     }
+
+
+
+
+
+
+
+    public Avatar findAvatar(long studentId) {
+        return avatarRepository.findByStudentId(studentId).orElseThrow();
+    }
+
+
 
 
 

@@ -19,8 +19,8 @@ public class FacultyController {
     }
 
     @PostMapping
-    public Faculty createFaculty(@PathVariable Faculty id) {
-        return facultyService.createFaculty(id);
+    public Faculty createFaculty(@RequestBody Faculty faculty) {
+        return facultyService.createFaculty(faculty);
     }
 
     @GetMapping("{id}")

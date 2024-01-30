@@ -2,6 +2,7 @@ package ru.hogwarts.hogwartsdatastreams.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.hogwartsdatastreams.model.Student;
@@ -9,19 +10,20 @@ import ru.hogwarts.hogwartsdatastreams.service.FacultyService;
 import ru.hogwarts.hogwartsdatastreams.service.StudentService;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
 @RequestMapping("students")
 public class StudentController {
-    private StudentService studentService;
+    private final StudentService studentService;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
     @PostMapping
-    public ResponseEntity<Student> createStudent(Student student) {
+    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         return ResponseEntity.ok(studentService.createdStudent(student));
     }
 
@@ -87,5 +89,20 @@ public class StudentController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
+
+
+
+//    @GetMapping
+//    public ResponseEntity‹Collection‹Student›› findStudents(@RequestParam(required = false) int age) {
+//        if (age › 0) {
+//            return ResponseEntity.ok(studentService.findByAge(age));
+//        }
+//        return ResponseEntity.ok(Collections.emptyList());
+//    }
+
+
+
+
+
 
 }
