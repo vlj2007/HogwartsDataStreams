@@ -1,16 +1,12 @@
 package ru.hogwarts.hogwartsdatastreams.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.hogwartsdatastreams.model.Student;
-import ru.hogwarts.hogwartsdatastreams.service.FacultyService;
 import ru.hogwarts.hogwartsdatastreams.service.StudentService;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -76,7 +72,6 @@ public class StudentController {
         return ResponseEntity.ok((studentService.findStudentByAge(age)));
     }
 
-
     @GetMapping(path = "/findstudent/{like}")
     public Collection<Student> findStudentByNameIgnoreCaseIsLike(@PathVariable String like) {
         return studentService.findStudentByNameIgnoreCaseIsLike(like);
@@ -89,20 +84,5 @@ public class StudentController {
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
-
-
-
-//    @GetMapping
-//    public ResponseEntity‹Collection‹Student›› findStudents(@RequestParam(required = false) int age) {
-//        if (age › 0) {
-//            return ResponseEntity.ok(studentService.findByAge(age));
-//        }
-//        return ResponseEntity.ok(Collections.emptyList());
-//    }
-
-
-
-
-
 
 }

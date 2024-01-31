@@ -7,7 +7,6 @@ import ru.hogwarts.hogwartsdatastreams.model.Student;
 import java.util.Collection;
 import java.util.List;
 
-@Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findStudentByAge(int age);

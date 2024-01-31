@@ -1,10 +1,7 @@
 package ru.hogwarts.hogwartsdatastreams.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.hogwartsdatastreams.api.IStudent;
-import ru.hogwarts.hogwartsdatastreams.model.Avatar;
 import ru.hogwarts.hogwartsdatastreams.model.Student;
 import ru.hogwarts.hogwartsdatastreams.repository.AvatarRepository;
 import ru.hogwarts.hogwartsdatastreams.repository.StudentRepository;
@@ -73,7 +70,5 @@ public class StudentService implements IStudent {
     public Collection<Student> findStudentByNameIgnoreCaseIsLike(String like) {
         return studentRepository.findStudentByNameIgnoreCaseIsLike(like);
     }
-
-
 
 }

@@ -37,7 +37,7 @@ public class AvatarController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping({"id"})
+    @DeleteMapping({"{id}"})
     public ResponseEntity<Void> deleteAvatar(@PathVariable Long id) {
         avatarService.delete(id);
         return ResponseEntity.ok().build();

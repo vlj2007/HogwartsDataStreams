@@ -9,9 +9,9 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
+
     private String name;
-    @Column
+
     private int age;
 
     @ManyToOne
